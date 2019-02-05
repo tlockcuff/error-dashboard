@@ -9,6 +9,7 @@ class Client extends Component {
     // just dynamically update the path of the errors collection
     // and it will auto load the new collection data
     errors.path = `clients/${this.props.match.params.clientId}/errors`;
+    // errors.query = (ref) => ref.orderBy('name').startAt('Err').endAt('Err' + '\uf8ff')
 
     return (
       <div className="container-fluid">
