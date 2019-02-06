@@ -1,0 +1,65 @@
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css";
+@import "~codemirror/lib/codemirror.css";
+@import "~codemirror/theme/ttcn.css";
+
+.CodeMirror {
+  height: auto !important;
+}
+
+.event-trace {
+  margin-left: 30px;
+}
+
+.event-trace-item {
+  position: relative;
+  margin-left: 2rem;
+}
+.event-trace-item:before {
+  content: "";
+  position: absolute;
+  border-left: 1px solid #ddd;
+  height: calc(100% + 1.1rem);
+  top: 0;
+  left: -2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.event-trace-item:after {
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ddd;
+  left: -2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.event-trace-item:hover:after,
+.event-trace-item:hover:before {
+  border-color: #007bff;
+  background-color: #007bff;
+}
+
+.event-trace-marker {
+  color: #6c757d;
+  width: 60px;
+  text-align: center;
+  left: -30px;
+  position: relative;
+  text-transform: uppercase;
+  font-size: 85%;
+  border: 1px solid #ddd;
+  border-radius: 0.25rem;
+  background: #fff;
+}
+
+.event-trace-item:last-of-type:before {
+  height: 100%;
+}
+
+.CodeMirror pre {
+  font-family: Monaco, Consolas, Courier New, monospace !important;
+  font-size: 12px !important;
+}

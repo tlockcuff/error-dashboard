@@ -1,0 +1,430 @@
+.exception .traceback {
+  margin-top: 15px;
+}
+
+.traceback.no-exception .frame:first-child {
+  border-top: 0;
+}
+
+.traceback .frame {
+  list-style-type: none;
+  position: relative;
+  margin: 0;
+}
+
+.traceback .frame .box-clippable .clip-fade {
+  bottom: 0;
+}
+
+.traceback .frame h3 {
+  font-size: 22px;
+}
+
+.traceback .frame.is-expandable .title {
+  cursor: pointer;
+}
+
+.traceback .frame.is-expandable .title:hover {
+  background: #f5f8fc;
+}
+
+.traceback .frame.system-frame.is-expandable .title:hover {
+  background: #ececf1;
+}
+
+.traceback .frame .title {
+  padding: 8px 20px;
+  font-size: 13px;
+  margin: 0;
+  line-height: 16px;
+  background: #f7f7f7;
+  word-break: break-all;
+  word-break: break-word;
+}
+
+.traceback .frame .title code {
+  font-family: inherit;
+  font-weight: 700;
+}
+
+.traceback .frame .title .informal {
+  font-style: italic;
+}
+
+.traceback .frame.system-frame .title {
+  background: #fbfbfc;
+}
+
+.traceback .frame.missing-frame .title {
+  background: #fae3e1;
+}
+
+.traceback .frame .title.as-table {
+  width: 100%;
+  padding-left: 15px;
+}
+
+.traceback .frame .title.as-table .package {
+  width: 15%;
+  font-size: 13px;
+  font-weight: 700;
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.traceback .frame .title.as-table .address {
+  font-family: Monaco, Consolas, Courier New, monospace;
+  font-size: 11px;
+  color: #493e54;
+  letter-spacing: -0.25px;
+  width: 100px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+
+.traceback .frame .title.as-table .symbol {
+  word-break: break-word;
+  flex: 1;
+}
+
+.traceback .frame .title.as-table .symbol code {
+  background: transparent;
+  color: #2c58a8;
+  padding-right: 5px;
+}
+
+.traceback .frame .title.as-table .symbol span.offset {
+  font-weight: 700;
+  padding-right: 10px;
+}
+
+.traceback .frame .title.as-table .symbol span.filename {
+  color: #6c5fc7;
+}
+
+.traceback .frame .title.as-table .symbol span.filename:before {
+  content: "(";
+}
+
+.traceback .frame .title.as-table .symbol span.filename:after {
+  content: ")";
+}
+
+.traceback .frame .original-src {
+  font-size: 12px;
+  padding-left: 3px;
+  position: relative;
+  top: 1px;
+}
+
+.traceback .frame .icon-open {
+  font-size: 12px;
+  margin-right: 3px;
+  margin-left: 3px;
+  position: relative;
+  top: 1px;
+}
+
+.traceback .frame .in-at {
+  opacity: 0.6;
+  margin: 0 2px;
+}
+
+.traceback .frame .blame {
+  color: #6f5f80;
+}
+
+.traceback .frame .blame a {
+  color: #625471;
+}
+
+.traceback .frame .blame .icon-mark-github {
+  position: relative;
+  top: 1px;
+}
+
+.traceback .frame .tooltip-inner {
+  word-wrap: break-word;
+  text-align: left;
+  max-width: 300px;
+}
+
+.traceback .frame .divider {
+  border-left: 1px solid #e2dee6;
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  margin: 0 6px;
+  position: relative;
+  top: 1px;
+}
+
+.traceback .frame code {
+  padding: 0;
+  background: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.traceback .frame .empty-context {
+  padding: 20px;
+  color: #625471;
+}
+
+.traceback .frame .empty-context p {
+  display: inline-block;
+  margin-bottom: 0;
+}
+
+.traceback .frame .empty-context .icon {
+  opacity: 0.45;
+  margin-right: 10px;
+  font-size: 0.85em;
+}
+
+.traceback .frame .context {
+  display: none;
+  background: #fff;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.traceback .frame .context > li {
+  padding: 0 20px;
+  background: inherit;
+}
+
+.traceback .frame .context table.key-value {
+  border-top: 1px solid #e2dee6;
+  padding: 0;
+  margin: 0 0 -8px;
+}
+
+.traceback .frame .context table.key-value td {
+  border-bottom: 1px solid #e2dee6 !important;
+}
+
+.traceback .frame .context table.key-value td.key {
+  width: 125px;
+  max-width: 125px;
+}
+
+.traceback .frame .context table.key-value td.value pre {
+  background: inherit;
+}
+
+.traceback .frame .context table.key-value tr:last-child td {
+  border-bottom: 0 !important;
+}
+
+.traceback .frame .context.expanded {
+  display: block;
+}
+
+.traceback .frame .box-clippable {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.traceback .frame .box-clippable:first-of-type {
+  margin-top: 0;
+}
+
+.traceback .frame .box-clippable:first-child {
+  margin-top: -20px;
+}
+
+.traceback .frame .tag-app {
+  color: #aaa;
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+
+.traceback .frame > div > table.key-value {
+  margin-bottom: 5px;
+}
+
+.traceback .frame > div > table.key-value > tbody > tr > th {
+  color: #493e54;
+  text-align: right;
+  padding-right: 12px !important;
+}
+
+.traceback .frame .btn-toggle {
+  display: block;
+  float: right;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin-left: 10px;
+  line-height: 16px;
+  font-size: 9px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.traceback .frame .expand-button:hover {
+  cursor: pointer;
+}
+
+.traceback .frame.expanded .expandable {
+  height: auto;
+}
+
+.traceback .frame:last-child .context {
+  margin-bottom: 0;
+}
+
+.traceback .frame:last-child .toggle-expand .btn {
+  margin-bottom: -13px;
+}
+
+.traceback.in-app-traceback .frame.leads-to-app .leads-to-app-hint {
+  display: none;
+}
+
+.traceback.in-app-traceback .frame.leads-to-app.collapsed .title {
+  opacity: 0.7;
+  font-size: 12px;
+  padding: 4px 20px;
+  background: #e9eff9;
+}
+
+.traceback.in-app-traceback .frame.leads-to-app.collapsed .title.is-expandable:hover {
+  opacity: 1;
+}
+
+.traceback.in-app-traceback .frame.leads-to-app.collapsed .title .package {
+  width: auto;
+}
+
+.traceback.in-app-traceback .frame.leads-to-app.collapsed .title.as-table {
+  padding-left: 15px;
+}
+
+.traceback.in-app-traceback .frame.leads-to-app.collapsed .address,
+.traceback.in-app-traceback .frame.leads-to-app.collapsed .btn-toggle,
+.traceback.in-app-traceback .frame.leads-to-app.collapsed .in-at-line,
+.traceback.in-app-traceback .frame.leads-to-app.collapsed .lineno {
+  display: none;
+}
+
+.traceback.in-app-traceback .frame.leads-to-app.collapsed .leads-to-app-hint {
+  display: inline;
+}
+
+.traceback.full-traceback .leads-to-app-hint {
+  display: none !important;
+}
+
+.traceback .expandable {
+  height: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.traceback .expandable .icon-plus {
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  opacity: 0.25;
+  -webkit-transition: opacity 0.1s linear;
+  -o-transition: 0.1s opacity linear;
+  transition: opacity 0.1s linear;
+}
+
+.traceback .expandable.key-value,
+.traceback .expandable .ws {
+  display: none;
+}
+
+.traceback .expandable:hover .icon-plus {
+  opacity: 0.5;
+}
+
+.traceback .expanded .expandable {
+  overflow: none;
+  height: auto;
+}
+
+.traceback .expanded .ws {
+  display: inline;
+}
+
+.traceback .context {
+  margin: 0;
+  list-style-position: inside;
+  list-style-type: decimal-leading-zero;
+  border-radius: 3px;
+  padding-left: 0;
+}
+
+.traceback .context .key-value {
+  display: none;
+}
+
+.traceback .context .key-value pre {
+  overflow: auto;
+}
+
+.traceback .context > li,
+.traceback .context .contextline {
+  padding-left: 15px;
+  font-family: Monaco, Consolas, Courier New, monospace;
+  color: #222;
+  background-color: #fff;
+  line-height: 24px;
+  font-size: 12px;
+  white-space: pre;
+  white-space: pre;
+  word-wrap: break-word;
+  min-height: 24px;
+}
+
+.traceback .context > li.active {
+  background-color: #f6f7f8;
+  list-style-type: none;
+  border-radius: 2px;
+}
+
+.traceback .context > li.active:first-child:last-child {
+  background-color: inherit;
+  color: inherit;
+  border-radius: 0;
+}
+
+.traceback .context > li.active pre {
+  color: #493e54;
+}
+
+.traceback .context > li:first-child {
+  border-radius: 2px 2px 0 0;
+}
+
+.traceback .context > li:last-of-type {
+  border-radius: 0 0 2px 2px;
+}
+
+.traceback .context li.closed {
+  border-radius: 2px;
+}
+
+.traceback .context.expanded .key-value {
+  display: table;
+}
+
+.traceback .context.expanded > li.active {
+  background-color: #6c5fc7;
+  color: #fff;
+  list-style-type: inherit;
+  border-radius: 0;
+}
+
+.traceback .context-line > li > span {
+  float: right;
+}

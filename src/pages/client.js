@@ -2,39 +2,52 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { errors } from "../utils/firebase";
 import { observer } from "mobx-react";
+import ErrorTime from "../components/error/time";
 
 class Client extends Component {
-  render() {
-    // this is pretty cool, it's an observable so we can
-    // just dynamically update the path of the errors collection
-    // and it will auto load the new collection data
+  componentDidMount() {
     errors.path = `clients/${this.props.match.params.clientId}/errors`;
-    // errors.query = (ref) => ref.orderBy('name').startAt('Err').endAt('Err' + '\uf8ff')
+    errors.query = ref => ref.orderBy("created", "desc");
+  }
 
+  render() {
     return (
-      <div className="container-fluid">
-        <h1 className="py-4">{this.props.match.params.clientId} Errors</h1>
-        <table className="table table-hover table-stripped">
+      <div className="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb mt-3 bg-white px-0 mx-0">
+            <li class="breadcrumb-item">
+              <Link to="/">Clients</Link>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+              {this.props.match.params.clientId}
+            </li>
+          </ol>
+        </nav>
+
+        <h1 className="pt-2 pb-4">{this.props.match.params.clientId} Errors</h1>
+        <table className="table table-striped table-hover w-100">
           <thead>
             <tr>
               <th scope="col">Name</th>
               <th scope="col">Message</th>
               <th scope="col">URL</th>
               <th scope="col">Created</th>
-              <th />
             </tr>
           </thead>
           <tbody>
             {errors.docs.map(doc => (
               <tr key={doc.id}>
-                <th scope="row">
-                  <Link to={`/client/${this.props.match.params.clientId}/error/${doc.id}`}>{doc.data.name}</Link>
-                </th>
-                <td>{doc.data.message}</td>
-                <td>{doc.data.location.href}</td>
-                <td> {doc.data.created}</td>
-                <td>
-                  <pre>{JSON.stringify(doc.data, null, 2)}</pre>
+                <td style={{ verticalAlign: "middle" }}>{doc.data.name}</td>
+                <td style={{ verticalAlign: "middle" }}>
+                  <Link to={`/client/${this.props.match.params.clientId}/error/${doc.id}`}>{doc.data.message}</Link>
+                </td>
+                <td style={{ verticalAlign: "middle" }}>
+                  <a href={doc.data.location.href.replace(/"/g, "")} target="_blank" rel="noopener noreferrer">
+                    {doc.data.location.href.replace(/"/g, "")}
+                  </a>
+                </td>
+                <td style={{ verticalAlign: "middle" }}>
+                  <ErrorTime timestamp={doc.data.created} />
                 </td>
               </tr>
             ))}

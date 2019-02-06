@@ -24,5 +24,6 @@ initFirestorter({ firebase: firebase });
 
 // export the collections and documents
 export const clients = new Collection("clients");
+clients.query = ref => ref.orderBy("lastUpdated", "desc");
 export const errors = new Collection();
 export const error = new Document();
