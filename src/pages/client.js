@@ -5,12 +5,25 @@ import { observer } from "mobx-react";
 import ErrorTime from "../components/error/time";
 import ErrorDetail from "../components/error/error-detail";
 import { distanceInWordsToNow } from "date-fns";
+import netlifyIdentity from "netlify-identity-widget";
+import { loginUser, logoutUser } from "../utils/auth";
 
 class Client extends Component {
   componentWillMount() {
     if (this.props.match.params.clientId) {
       this.loadClientErrors();
     }
+  }
+
+  componentDidMount() {
+    const user = localStorage.getItem("currentOpenSaucedUser");
+    if (user) {
+      this.setState({ user: JSON.parse(user) });
+    } else {
+      loginUser();
+    }
+    netlifyIdentity.on("login", user => this.setState({ user }, loginUser()));
+    netlifyIdentity.on("logout", user => this.setState({ user: null }, logoutUser()));
   }
 
   // if the clientId in route change load in the new errors
