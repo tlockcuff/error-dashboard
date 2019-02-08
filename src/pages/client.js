@@ -5,25 +5,12 @@ import { observer } from "mobx-react";
 import ErrorTime from "../components/error/time";
 import ErrorDetail from "../components/error/error-detail";
 import { distanceInWordsToNow } from "date-fns";
-import netlifyIdentity from "netlify-identity-widget";
-import { loginUser, logoutUser } from "../utils/auth";
 
 class Client extends Component {
   componentWillMount() {
     if (this.props.match.params.clientId) {
       this.loadClientErrors();
     }
-  }
-
-  componentDidMount() {
-    const user = localStorage.getItem("currentOpenSaucedUser");
-    if (user) {
-      this.setState({ user: JSON.parse(user) });
-    } else {
-      loginUser();
-    }
-    netlifyIdentity.on("login", user => this.setState({ user }, loginUser()));
-    netlifyIdentity.on("logout", user => this.setState({ user: null }, logoutUser()));
   }
 
   // if the clientId in route change load in the new errors
@@ -74,7 +61,10 @@ class Client extends Component {
               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 {clients.docs.map(doc => (
                   <Link className="dropdown-item d-flex justify-content-between align-items-center" key={doc.id} to={`/client/${doc.id}`}>
-                    <div>{doc.id}</div>
+                    <div style={{ whiteSpace: "normal" }}>
+                      <img src={`${doc.data.domain}/images/_fav-icon.png`} className="rounded" style={{ width: 28, position: "relative", top: "-2px", marginRight: 12 }} alt="" />
+                      {doc.id}
+                    </div>
                     <div>
                       <small className="text-muted" style={{ fontSize: "0.8rem" }}>
                         {distanceInWordsToNow(new Date(parseInt(doc.data.lastUpdated)), { addSuffix: true })}
