@@ -6,6 +6,7 @@ const TagStyled = styled.div`
   border: 1px solid #ddd;
   border-radius: 5px;
   line-height: 1;
+  background: #fff;
 `;
 const TagPrefix = styled.div`
   border-right: 1px solid #ddd;

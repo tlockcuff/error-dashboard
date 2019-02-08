@@ -1,39 +1,20 @@
 import React, { Component } from "react";
-import { error } from "../utils/firebase";
 import { observer } from "mobx-react";
-import ErrorName from "../components/error/name";
-import ErrorTime from "../components/error/time";
-import UserAgent from "../components/error/user-agent";
-import Section from "../components/section";
-import { TagList, Tag } from "../components/tag";
-import { ua } from "../utils/common";
+import ErrorName from "./name";
+import ErrorTime from "./time";
+import UserAgent from "./user-agent";
+import Section from "../section";
+import { TagList, Tag } from "../tag";
+import { ua } from "../../utils/common";
 import prettyMs from "pretty-ms";
-import ErrorTrace from "../components/error/stack-trace";
-import EventTrace from "../components/error/event-trace";
-import { Link } from "react-router-dom";
+import ErrorTrace from "./stack-trace";
+import EventTrace from "./event-trace";
 
 class ErrorDetail extends Component {
-  componentDidMount() {
-    error.path = `clients/${this.props.match.params.clientId}/errors/${this.props.match.params.errorId}`;
-  }
-
   render() {
+    const error = this.props.error;
     return error.data ? (
-      <div className="container">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb mt-3 bg-white px-0 mx-0">
-            <li class="breadcrumb-item">
-              <Link to="/">Clients</Link>
-            </li>
-            <li class="breadcrumb-item">
-              <Link to={`/client/${this.props.match.params.clientId}`}>{this.props.match.params.clientId}</Link>
-            </li>
-            <li class="breadcrumb-item active" aria-current="page">
-              {error.data.name}
-            </li>
-          </ol>
-        </nav>
-
+      <div className="">
         <Section className="pt-2 d-flex align-items-center">
           <ErrorName name={error.data.name} message={error.data.message} />
           <div className="ml-auto text-right">
@@ -57,12 +38,12 @@ class ErrorDetail extends Component {
         </Section>
 
         <Section title="MESSAGE">
-          <pre className="m-0 p-0">{error.data.message}</pre>
+          <pre className="m-0 p-3 border rounded">{error.data.message}</pre>
         </Section>
 
         <Section title="STACK TRACE">{error.data.error ? <ErrorTrace stack={error.data.error} /> : null}</Section>
 
-        <Section title="EVENT TRACE" desc="">
+        <Section title="EVENT TRACE" desc="An event trace is a record of the last 4 clicked elements prior to the error occuring.">
           {error.data.events && JSON.parse(error.data.events).length > 0 ? <EventTrace events={error.data.events} /> : <p className="text-muted">No event trace was recorded</p>}
         </Section>
 
@@ -105,7 +86,9 @@ class ErrorDetail extends Component {
           ) : null}
         </Section>
       </div>
-    ) : null;
+    ) : (
+      <div className="text-center p-5">Select an error to view it's details</div>
+    );
   }
 }
 

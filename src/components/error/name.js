@@ -4,8 +4,8 @@ export default class ErrorName extends Component {
   render() {
     return (
       <div>
-        <h4 className="mb-1 text-primary">{this.props.name}</h4>
-        <p className="m-0 p-0">{this.props.message}</p>
+        <h5 className="m-0 p-0 text-primary">{this.props.message}</h5>
+        <p className="mb-1">{this.props.name}</p>
       </div>
     );
   }

@@ -22,7 +22,7 @@ class EventTrace extends Component {
               </TagList>
             </div>
             <div className="border rounded" style={{ maxHeight: 180, overflowY: "auto" }}>
-              <CodeMirror value={html_beautify(o.html)} options={{ readOnly: true, mode: "xml", theme: "ttcn", lineNumbers: true }} />
+              <CodeMirror value={html_beautify(o.html) + '...'} options={{ readOnly: true, mode: "xml", theme: "ttcn", lineNumbers: true }} />
             </div>
           </div>
         ))}
